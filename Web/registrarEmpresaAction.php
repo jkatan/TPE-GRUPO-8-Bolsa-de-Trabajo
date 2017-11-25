@@ -21,7 +21,7 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
         $address_id = $arr[0];
         //insertamos en user, usando el address_id retornado
         $query = "insert into _user(email,username,pass,address_id) values (
-          '".$_POST['email']."', '".$_POST['username']."', '".$_POST['pass']."',
+          '".$_POST['email']."', '".$_POST['username']."', '".MD5($_POST['pass'])."',
           '".$address_id."') RETURNING user_id;";
         $result = pg_query($dbcon, $query);
         $arr = pg_fetch_array($result, 0, PGSQL_NUM);
@@ -29,7 +29,7 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
         //insertamos en company, usando el user_id retornado
         $query = "insert into company(user_id,cuit,phone,company_name,sector_id) values (
           '".$user_id."', '".$_POST['cuit']."', '".$_POST['phone']."',
-          '".$_POST['company_name']."',''0') RETURNING user_id;";
+          '".$_POST['company_name']."','".$POST['sector']."') RETURNING user_id;";
         $result = pg_query($dbcon, $query);
       }
       else {

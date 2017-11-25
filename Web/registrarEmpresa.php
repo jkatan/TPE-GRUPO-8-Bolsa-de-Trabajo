@@ -11,14 +11,14 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
   </head>
   <body>
     <h1>GoWork - Registrar Empresa</h1>
-    <form method="POST" action="">
+    <form method="POST" action="registrarEmpresaAction.php">
       <h2>Informaci&oacute;n de la empresa</h2>
       <table>
         <td><label>Nombre de la Empresa</label></td><td><input type="text" name="companyname" /></td></tr>
         <td><label>CUIT</label></td><td><input type="text" name="cuit" /></td></tr>
         <td><label>Sector</label></td>
         <td>
-          <select>
+          <select name='sector'>
             <?php
             $result = pg_query($dbcon, "select * from sector order by name;");
             while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
