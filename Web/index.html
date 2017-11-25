@@ -1,0 +1,17 @@
+<?php
+
+$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
+$result = pg_query($dbcon, "select * from test;");
+
+?>
+
+<html>
+  <head>
+    <title>GoWork</title>
+  </head>
+  <body>
+    <h1>GoWork</h1>
+    <a href="registrarEmpresa.php">Registrar empresa</a><br/>
+    <a href="registrar.php?tipo=persona">Registrar persona</a>
+  </body>
+</html>
