@@ -6,17 +6,12 @@ html,body
     padding: 0px;
     overflow-x: hidden;
 }
-.navbar {
-    -webkit-box-shadow: 0 8px 6px -6px #999;
-    -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 8px 6px -6px #999;
-    height:
-    /* the rest of your styling */
-}
+
 #navbar {
   margin: 0;
   padding: 0;
   height: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #login {
     position:absolute;
@@ -28,6 +23,7 @@ html,body
     top: 150px;
     margin-left: 60%;
     margin-right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #logo {
