@@ -10,7 +10,7 @@ html,body
 #navbar {
   margin: 0;
   padding: 0;
-  height: 10%;
+  height: 7%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #login {
@@ -26,15 +26,61 @@ html,body
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#logo {
+#search-bar{
   position: relative;
-  display: inline-block;
-  overflow: hidden;
+  height: 70%;
+  width: 500px;
+}
+
+#search-button{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+
+#logo {
+  position: inherit;
+  display: inline;
   margin: 0;
 }
+
+#user-image{
+  position: relative;
+  margin-left: 0;
+  border-radius:360px;
+  width:48px;
+  height:48px;
+  left: -300px;
+
+}
+#profile{
+  color: white;
+  position: auto;
+  height:auto;
+  margin-right: 0;
+}
+
 #or {
   margin-bottom: 0;
   text-align: center;
+}
+#carouselExampleIndicators{
+    position: relative;
+    width: 800px;
+    height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#title-look-out{
+  margin-top:  4%;
+  margin-bottom:  4%;
+}
+.carousel-inner{
+  max-width: 100% ;
+  max-height: 100%;
+}
+.carousel-image{
+  width: 100%;
+  height: 100%;
 }
 
 .lower-links-login{
@@ -47,4 +93,8 @@ html,body
 .center-log{
   height: 90vh;
   background-image: url(img/office.jpg);
+}
+
+.princpal-page{
+  background-color: rgba(255,255, 255, 0.1);
 }
