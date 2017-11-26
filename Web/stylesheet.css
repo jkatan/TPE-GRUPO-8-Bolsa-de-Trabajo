@@ -30,6 +30,7 @@ html,body
   position: relative;
   height: 70%;
   width: 500px;
+  left:96px;
 }
 
 #search-button{
@@ -65,15 +66,22 @@ html,body
   text-align: center;
 }
 #carouselExampleIndicators{
+    margin-left: 8.5%;
     position: relative;
     width: 800px;
     height: 400px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#title-look-out{
-  margin-top:  4%;
-  margin-bottom:  4%;
+
+#look-out{
+  margin-left: 35%;
+  margin-bottom: 4%;
+  margin-top: 2%;
 }
+#subline{
+  height: 5%;
+}
+
 .carousel-inner{
   max-width: 100% ;
   max-height: 100%;
@@ -82,7 +90,13 @@ html,body
   width: 100%;
   height: 100%;
 }
-
+.thatarea{
+    background-color:  rgba(0, 0, 0, 0.1);
+}
+.notthatarea{
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .lower-links-login{
   border: rgba(0, 0, 0, 0.2);
 }
@@ -95,6 +109,7 @@ html,body
   background-image: url(img/office.jpg);
 }
 
-.princpal-page{
+.principal-page{
   background-color: rgba(255,255, 255, 0.1);
+  height: 100%;
 }
