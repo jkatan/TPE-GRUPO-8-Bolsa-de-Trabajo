@@ -8,12 +8,76 @@ $result = pg_query($dbcon, "select * from test;");
 <html>
   <head>
     <title>GoWork</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel=StyleSheet href="stylesheet.css" type="text/css" media=screen>
   </head>
   <body>
-    <h1>GoWork</h1>
+    <nav id="navbar" class="navbar sticky-top navbar-dark bg-dark">
+      <img id="logo" src="img/logo.png"></img>
+  <!-- Navbar content -->
+    </nav>
+    <!-- Log in -->
+    <div class="row princpal-row">
+      <div class="col-sm-12">
+        <div class="row center-log">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <div id="login">
+              <form class="px-4 py-3">
+                <div class="form-group">
+                  <label for="exampleDropdownFormEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="exampleDropdownFormPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    Remember me
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">New around here and looking for a job? Sign up</a>
+              <a class="dropdown-item" href="#">or Register enterprise and start looking for employees</a>
+              <a class="dropdown-item" href="#">Forgot password?</a>
+              <br>
+            </div>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+        <div class="row lower-info">
+          <div class="col-sm-4">
+              <p>Buenos Aires, Argentina.</p><br>
+              <p>Group 8.</p><br>
+              <p>Lóránt Mikolás, Daniella Liberman, Giuliano Scaglioni,<br> Mati Heimann y Johnathan Katán.</p>
+          </div>
+          <div class="col-sm-4">
+            <p>GoWork is a registered mark.</p>
+            <br>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
     <a href="registrarEmpresa.php">Registrar empresa</a><br/>
     <a href="registrarPersona.php">Registrar persona</a><br/>
     <a href="login.php">Login</a><br/>
     <a href="darDeBaja.php">Dar de Baja</a>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
   </body>
 </html>

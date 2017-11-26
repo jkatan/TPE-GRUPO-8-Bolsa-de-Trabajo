@@ -1,0 +1,47 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+    height:
+    /* the rest of your styling */
+}
+#navbar {
+  margin: 0;
+  padding: 0;
+  height: 10%;
+}
+#login {
+    position:absolute;
+    z-index: 2; /* Make sure its above other items. */
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+
+    top: 150px;
+    margin-left: 60%;
+    margin-right: auto;
+}
+
+#logo {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+}
+
+.lower-info{
+  background-color: lightgray;
+}
+
+.center-log{
+  height: 90vh;
+  background-image: url(img/office.jpg);
+}
