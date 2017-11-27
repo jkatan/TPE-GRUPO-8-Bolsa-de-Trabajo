@@ -2,8 +2,6 @@ html,body
 {
     width: 100%;
     height: 100%;
-    margin: 0px;
-    padding: 0px;
     overflow-x: hidden;
 }
 
@@ -74,12 +72,18 @@ html,body
 }
 
 #look-out{
-  margin-left: 35%;
+  margin-left: 38%;
   margin-bottom: 4%;
   margin-top: 2%;
 }
 #subline{
   height: 5%;
+}
+
+#job-offerings{
+  margin-top: 2%;
+  margin-left: 38%;
+  width: 100%;
 }
 
 .carousel-inner{
@@ -97,6 +101,13 @@ html,body
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.subsection-notthatarea{
+  padding-bottom: 7%;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
 .lower-links-login{
   border: rgba(0, 0, 0, 0.2);
 }
@@ -112,4 +123,13 @@ html,body
 .principal-page{
   background-color: rgba(255,255, 255, 0.1);
   height: 100%;
+}
+
+.job{
+  margin-left: 23%;
+  width: 100%;
+}
+
+.job-title{
+  width: 100%;
 }
