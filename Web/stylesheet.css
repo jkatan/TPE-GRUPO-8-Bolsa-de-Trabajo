@@ -5,6 +5,8 @@ html,body
     overflow-x: hidden;
 }
 
+
+
 #navbar {
   margin: 0;
   padding: 0;
@@ -82,7 +84,8 @@ html,body
 
 #job-offerings{
   margin-top: 2%;
-  margin-left: 38%;
+  margin-bottom: 2%;
+  margin-left: 42%;
   width: 100%;
 }
 
@@ -96,10 +99,12 @@ html,body
 }
 .thatarea{
     background-color:  rgba(0, 0, 0, 0.1);
+    height:150%;
 }
 .notthatarea{
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height:150%;
 }
 
 .subsection-notthatarea{
@@ -124,12 +129,24 @@ html,body
   background-color: rgba(255,255, 255, 0.1);
   height: 100%;
 }
-
 .job{
-  margin-left: 23%;
-  width: 100%;
+  width: 700px;
+   margin-left: 20%;
+   margin-right: 0;
+   margin-bottom: 5%;
 }
-
-.job-title{
-  width: 100%;
+.card-header{
+  width: inherit;
+  height:3.5%;
+}
+.card-title{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.job-header-img{
+  max-width: 60%;
+  max-height: 100%;
+}
+.apply-button{
+  margin-bottom: 2%;
 }
