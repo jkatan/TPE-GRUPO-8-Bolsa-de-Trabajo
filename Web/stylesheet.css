@@ -157,7 +157,7 @@ html,body
 }
 .user-name{
   padding-top:2%;
-  
+
   margin-bottom: 5%;
   padding-left: 5%;
 }
@@ -184,4 +184,12 @@ html,body
 .see-all{
   margin-top: 2%;
   margin-left: 62%;
+}
+.position{
+  border-left-color: white;
+  border-right-color:white;
+  width: 100%;
+}
+.see-applicants-btn{
+  float: left;
 }
