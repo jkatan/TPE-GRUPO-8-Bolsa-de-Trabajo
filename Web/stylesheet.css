@@ -30,7 +30,7 @@ html,body
   position: relative;
   height: 70%;
   width: 500px;
-  left:96px;
+  left:270px;
 }
 
 #search-button{
@@ -51,14 +51,14 @@ html,body
   border-radius:360px;
   width:48px;
   height:48px;
-  left: -300px;
+  left: -150px;
 
 }
 #profile{
   color: white;
-  position: auto;
   height:auto;
-  margin-right: 0;
+  float: right;
+  margin-left: 20%;
 }
 
 #or {
@@ -131,7 +131,7 @@ html,body
 }
 .job{
   width: 700px;
-   margin-left: 20%;
+   margin-left: 19%;
    margin-right: 0;
    margin-bottom: 5%;
 }
@@ -149,4 +149,39 @@ html,body
 }
 .apply-button{
   margin-bottom: 2%;
+}
+.fixed-user{
+  position: fixed;
+  left: 4%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.user-name{
+  padding-top:2%;
+  
+  margin-bottom: 5%;
+  padding-left: 5%;
+}
+.user-image{
+  width: 90px;
+  height: 90px;
+  margin-left: 30%;
+  margin-bottom: 2%;
+  border-radius: 360px;
+}
+.user-description{
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  padding-left: 5%;
+  padding-bottom: 10%;
+}
+
+.pending-applications-btn{
+  margin-left: 19%;
+  margin-top: 3%;
+  margin-bottom: 10%;
+}
+.see-all{
+  margin-top: 2%;
+  margin-left: 62%;
 }
