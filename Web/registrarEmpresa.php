@@ -1,9 +1,7 @@
 <?php
-
-$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
-
+  require_once(__DIR__.'/backend/db.php');
+  $sectors = DB::getInstance()->getSectors();
 ?>
-
 <html>
   <head>
     <title>GoWork</title>
@@ -20,9 +18,8 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
         <td>
           <select name='sector'>
             <?php
-            $result = pg_query($dbcon, "select * from sector order by name;");
-            while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-              echo '<option value="'.$row['id'].'"> '.$row['name'].' </option>';
+            foreach ($sectors as $sector) {
+              echo '<option value="'.$sector->getID().'">'.$sector->getName().'</option>';
             }
             ?>
           </select>

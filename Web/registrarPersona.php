@@ -1,7 +1,3 @@
-<?php
-
-$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
-?>
 <html>
   <head>
     <title>GoWork</title>
@@ -15,10 +11,27 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
         <td><label>Nombre Completo</label></td><td><input type="text" name="fullname" /></td></tr>
         <td><label>Apellido</label></td><td><input type="text" name="surname" /></td></tr>
         <td><label>DNI</label></td><td><input type="text" name="dni"/></td></tr>
-        <td><label>Fecha de nacimiento</label></td><td><input type="date" name="birthdate"/></td></tr>
-        <td><label>Sexo</label></td><td><input type="radio" name="gender" value="male"/>Masculino
-          <input type="radio" name="gender" value="female"/>Femenino
-          <input type="radio" name="gender" value="other"/>Otro
+        <td><label>Fecha de nacimiento</label></td><td>
+        <input style="width: 3em;" type="text" placeholder="Dia" name="birthdate_day" />
+        <select name="birthdate_month">
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <input style="width: 5em;" type="text" placeholder="Año" name="birthdate_year" />
+        </td></tr>
+        <td><label>Sexo</label></td><td><input type="radio" name="gender" value="m"/>Masculino
+          <input type="radio" name="gender" value="f"/>Femenino
+          <input type="radio" name="gender" value="o"/>Otro
         </td></tr>
         <td><label>Ubicaci&oacute;n</label></td>
         <td><input placeholder="Direcci&oacute;n" name="address" /></td></tr>

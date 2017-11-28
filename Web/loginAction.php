@@ -1,8 +1,6 @@
 <?php
-
-$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
+  require_once(__DIR__.'/backend/db.php');
 ?>
-
 <html>
   <head>
     <title>GoWork</title>
@@ -11,13 +9,10 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
   <body>
     <h1>GoWork - Login</h1>
     <?php
-      $result = pg_query($dbcon, "select * from _user where username='".$_POST['username']."';");
-      $user = pg_fetch_array($result, null, PGSQL_ASSOC);
-      if($user['pass'] != md5($_POST['pass'])) {
-        echo 'Error al iniciar sesi&oacute;n';
-      }
-      else {
+      if(DB::getInstance()->checkLogin($_POST['username'], $_POST['pass']) == "ok") {
         echo 'Login OK!';
+      } else {
+        echo 'Error al iniciar sesi&oacute;n';
       }
     ?>
   </body>

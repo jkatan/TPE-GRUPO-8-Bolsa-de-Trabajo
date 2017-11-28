@@ -1,9 +1,3 @@
-<?php
-
-$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
-
-?>
-
 <html>
   <head>
     <title>GoWork</title>
