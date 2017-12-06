@@ -34,6 +34,8 @@
 
     function getGender() { return $this->gender; }
 
+    function userType() { return "person"; }
+
   }
 
 ?>

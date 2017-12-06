@@ -1,17 +1,12 @@
-<html>
-  <head>
-    <title>GoWork</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-  </head>
-  <body>
-    <h1>GoWork - Login</h1>
-      <form method="POST" action="loginAction.php">
-      <h2>Iniciar sesi&oacute;n</h2>
+<?php include('header.php'); ?>
+    <form class="styled-form" method="POST" action="loginAction.php">
+      <h1>Iniciar sesi&oacute;n</h1>
       <table>
         <td><label>Nombre de usuario</label></td><td><input type="text" name="username" /></td></tr>
         <td><label>Contraseña</label></td><td><input type="password" name="pass" /></td></tr>
+        <td></td><td>
+          <input type="submit" value="Iniciar Sesi&oacute;n" name="login" />
+        </td>
       </table>
-      <input type="submit" value="iniciar sesi&oacute;n" name="login" />
     </form>
-  </body>
-</html>
+<?php include('footer.php'); ?>

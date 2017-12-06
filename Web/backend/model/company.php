@@ -31,6 +31,8 @@
 
     function getSector() { return $this->sector; }
 
+    function userType() { return "company"; }
+
   }
 
 ?>

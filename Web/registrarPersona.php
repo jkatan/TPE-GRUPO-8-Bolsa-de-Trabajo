@@ -1,11 +1,6 @@
-<html>
-  <head>
-    <title>GoWork</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-  </head>
-  <body>
-    <h1>GoWork - Registrar Persona</h1>
-    <form method="POST" action="registrarPersonaAction.php">
+<?php include('header.php'); ?>
+    <h1>Registrar Persona</h1>
+    <form class="styled-form" method="POST" action="registrarPersonaAction.php">
       <h2>Informaci&oacute;n Personal</h2>
       <table>
         <td><label>Nombre Completo</label></td><td><input type="text" name="fullname" /></td></tr>
@@ -29,17 +24,18 @@
         </select>
         <input style="width: 5em;" type="text" placeholder="Año" name="birthdate_year" />
         </td></tr>
-        <td><label>Sexo</label></td><td><input type="radio" name="gender" value="m"/>Masculino
-          <input type="radio" name="gender" value="f"/>Femenino
-          <input type="radio" name="gender" value="o"/>Otro
+        <td><label>Sexo</label></td><td><input type="radio" name="gender" value="m"/><label>Masculino</label>
+          <input type="radio" name="gender" value="f"/><label>Femenino</label>
+          <input type="radio" name="gender" value="o"/><label>Otro</label>
         </td></tr>
         <td><label>Ubicaci&oacute;n</label></td>
-        <td><input placeholder="Direcci&oacute;n" name="address" /></td></tr>
-        <td></td><td><input placeholder="Localidad" name="city" /></td></tr>
-        <td></td><td><input placeholder="Provincia" name="state" /></td></tr>
-        <td></td><td><input placeholder="Pa&iacute;s" name="country" /></td></tr>
-        <td></td><td><input placeholder="CP" name="cp" /></td></tr>
+        <td><input type="text" placeholder="Direcci&oacute;n" name="address" /></td></tr>
+        <td></td><td><input type="text" placeholder="Localidad" name="city" /></td></tr>
+        <td></td><td><input type="text" placeholder="Provincia" name="state" /></td></tr>
+        <td></td><td><input type="text" placeholder="Pa&iacute;s" name="country" /></td></tr>
+        <td></td><td><input type="text" placeholder="CP" name="cp" /></td></tr>
       </table>
+      <br/>
       <h2>Informaci&oacute;n de la cuenta</h2>
       <table>
         <td><label>Nombre de usuario</label></td><td><input type="text" name="username" /></td></tr>
@@ -52,5 +48,4 @@
       </div>
       <input type="submit" value="Registrar" name="register" />
     </form>
-  </body>
-</html>
+<?php include('footer.php'); ?>
