@@ -160,6 +160,22 @@ body {
 .box .row {
 }
 
+ul.profile-actions {
+  list-style-type: none;
+}
+
+.profile-actions a {
+  color: white;
+  text-decoration: none;
+}
+.profile-actions a:visited {
+  color:white;
+}
+
+.profile-actions a:hover {
+  color:rgb(59, 131, 247);;
+}
+
 .box .row.header {
   flex: 0 1 auto;
   /* The above is shorthand for:

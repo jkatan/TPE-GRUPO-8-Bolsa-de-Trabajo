@@ -6,15 +6,9 @@
   } else {
     header( "refresh:3;url=registrarEmpresa.php" );
   }
+  include("header.php");
 ?>
-
-<html>
-  <head>
-    <title>GoWork</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-  </head>
-  <body>
-    <h1>GoWork - Registrar Empresa</h1>
+    <h1>Registrar Empresa</h1>
     <?php
       if($result) {
         echo "Se cre&oacute; correctamente su cuenta Empresa!</br>";
@@ -23,5 +17,4 @@
         echo "Error al crear la cuenta!";
       }
     ?>
-  </body>
-</html>
+<?php include("footer.php"); ?>

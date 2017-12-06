@@ -1,15 +1,10 @@
 <?php
-
-$dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
+  include('header.php');
+  $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 password=passwordING1") or die('connection failed');
+  $session->destroy();
+  header( "refresh:3;url=index.php" );
 ?>
-
-<html>
-  <head>
-    <title>GoWork</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-  </head>
-  <body>
-    <h1>GoWork - Dar de Baja</h1>
+    <h1>Dar de Baja</h1>
     <?php
       $result = pg_query($dbcon, "select * from _user where username='".$_POST['username']."';");
       $user = pg_fetch_array($result, null, PGSQL_ASSOC);
@@ -23,5 +18,4 @@ $dbcon = pg_connect("host=localhost port=9999 dbname=u2017b-8 user=u2017b-8 pass
         $result = pg_query($dbcon, $query);
       }
     ?>
-  </body>
-</html>
+<?php include('footer.php'); ?>

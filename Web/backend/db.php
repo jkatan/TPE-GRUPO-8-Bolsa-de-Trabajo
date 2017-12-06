@@ -197,7 +197,7 @@
         )
       );
       if($result == null) {
-        $this->removeAddress();
+        $this->removeAddress($address_id);
         return null;
       }
       $result_row = pg_fetch_array($result, 0, PGSQL_NUM);
@@ -232,11 +232,14 @@
     }
 
     function removeAddress($address_id) {
-      //DELETE address here
+      pg_query($this->dbcon, "DELETE FROM address WHERE address_id=".$address_id.";");
     }
 
     function removeUser($user_id) {
-      //DELETE user here
+      $result = pg_query($this->dbcon, "SELECT address_id FROM _user WHERE user_id=".$user_id.";");
+      $result_row = pg_fetch_array($result, 0, PGSQL_NUM);
+      $this->removeAddress($result_row[0]);
+      pg_query($this->dbcon, "DELETE FROM _user WHERE user_id=".$user_id.";");
     }
 
     function addPerson($person)
@@ -266,7 +269,7 @@
         )
       );
       if($result == null) {
-        $this->removeUser();
+        $this->removeUser($user_id);
         return false;
       }
       return true;
@@ -298,7 +301,7 @@
         )
       );
       if($result == null) {
-        $this->removeUser();
+        $this->removeUser($user_id);
         return false;
       }
       return true;

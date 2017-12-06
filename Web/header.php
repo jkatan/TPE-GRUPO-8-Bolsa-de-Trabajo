@@ -17,6 +17,7 @@
       <?php
         if($session->status == "logged-in") {
           echo "<a class=\"link\" href=\"profile.php\">".$session->user->getUsername()."</a>";
+          echo "<a class=\"link\" href=\"logout.php\">Cerrar Sesion</a>";
         } else {
           echo "
           <a class=\"link\" href=\"login.php\">Login</a>

@@ -1,25 +1,19 @@
 <?php
   require_once(__DIR__.'/backend/db.php');
   require_once(__DIR__.'/backend/session.php');
-
-
   if(($user = DB::getInstance()->checkLogin($_POST['username'], $_POST['pass'])) != "fail") {
+    header( "refresh:3;url=profile.php" );
     $session = Session::getInstance();
     $session->status = "logged-in";
     $session->user = $user;
-    $msg = "<span>".$session->user->getUsername()." ha iniciado sesi&oacute;n correctamente!</span>";
+    $msg = "<span class=\".box-msg\">".$session->user->getUsername()." ha iniciado sesi&oacute;n correctamente!</span>";
   } else {
-    $msg = "<span style=\"color: red;\">Error al inciar sesi&oacute;n!</span>";
+    header( "refresh:3;url=login.php" );
+    $msg = "<span class=\".box-msg error\">Error al inciar sesi&oacute;n!</span>";
   }
 
+  include('header.php');
 ?>
-<html>
-  <head>
-    <title>GoWork</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
-  </head>
-  <body>
-    <h1>GoWork - Login</h1>
+    <h1>Login</h1>
     <?php echo $msg; ?>
-  </body>
-</html>
+<?php include('footer.php'); ?>
