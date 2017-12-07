@@ -20,6 +20,7 @@ CREATE TABLE address (
 
 CREATE TABLE _user (
         user_id SERIAL,
+        activated BOOLEAN DEFAULT false,
         email TEXT,
         username TEXT,
         pass TEXT,

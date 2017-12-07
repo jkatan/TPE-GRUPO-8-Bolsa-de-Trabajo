@@ -102,6 +102,46 @@
       return $ret;
     }
 
+    function isUserActivated($user) {
+      $query = 'SELECT activated FROM _user WHERE username=$1;';
+      if(is_string($user)) {
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($user)
+        );
+      } else {
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($user->getUsername())
+        );
+      }
+      $result_row = pg_fetch_array($result, null, PGSQL_ASSOC);
+      return $result_row[0];
+    }
+
+    function activateUser($user) {
+      $query = 'UPDATE _user SET activated = true WHERE username=$1;';
+      if(is_string($user)) {
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($user)
+        );
+      } else {
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($user->getUsername())
+        );
+      }
+      if($result != null) {
+        return true;
+      }
+      return false;
+    }
+
     function getCompanyFromUser($user) {
       $query = 'SELECT * FROM company
                 WHERE user_id=$1;';
