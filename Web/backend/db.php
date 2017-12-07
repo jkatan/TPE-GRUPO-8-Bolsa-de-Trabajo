@@ -42,12 +42,28 @@
 
     function getPosts($filters) {
       $array = array();
-      $query = 'SELECT * FROM post WHERE LOWER(title) LIKE $1';
-      $result = pg_query_params(
-        $this->dbcon,
-        $query,
-        array("%".strtolower($filters['keywords'])."%")
-      );
+      if(isset($filters['latest'])) {
+        $query = 'SELECT * FROM post ORDER BY creation_date DESC LIMIT $1;';
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($filters['latest'])
+        );
+      } else if(isset($filters['company'])) {
+        $query = 'SELECT * FROM post WHERE company_id=$1;';
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array($filters['company'])
+        );
+      } else if(isset($filters['keywords'])) {
+        $query = 'SELECT * FROM post WHERE LOWER(title) LIKE $1;';
+        $result = pg_query_params(
+          $this->dbcon,
+          $query,
+          array("%".strtolower($filters['keywords'])."%")
+        );
+      }
 
       while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
         array_push($array, new Post(

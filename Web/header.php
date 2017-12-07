@@ -16,7 +16,7 @@
       <a id="logolink" href="index.php"><span id="logo">GoWork</span></a>
       <?php
         if($session->status == "logged-in") {
-          echo "<a class=\"link\" href=\"profile.php\">".$session->user->getUsername()."</a>";
+          echo "<a class=\"link\" href=\"profile.php\">Mi Perfil (".$session->user->getUsername().")</a>";
           echo "<a class=\"link\" href=\"logout.php\">Cerrar Sesion</a>";
         } else {
           echo "
