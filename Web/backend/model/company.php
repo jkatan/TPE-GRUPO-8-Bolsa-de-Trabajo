@@ -13,6 +13,7 @@
     private $cuit = "";
     private $phone = "";
     private $sector = "";
+    private $id = 0;
 
     function __construct($username, $pass, $email, $address, $company_name, $cuit, $phone, $sector)
     {
@@ -22,6 +23,10 @@
       $this->phone = $phone;
       $this->sector = $sector;
     }
+
+    function setID($id) { $this->id = $id; }
+
+    function getID() { return $this->id; }
 
     function getCompanyName() { return $this->company_name; }
 

@@ -1,6 +1,7 @@
 <?php
 
   require_once(__DIR__.'/db.php');
+  require_once(__DIR__.'/session.php');
 
   function insertCompanyFromPOST($POST)
   {
@@ -57,6 +58,30 @@
     return $result;
   }
 
+  function insertPostFromPOST($POST)
+  {
+    if(newPostPOSTDataCheck($POST)) {
+      $result = DB::getInstance()->addPost(
+        new Post (
+            $POST['title'],
+            "",
+            $POST['salary_high'],
+            $POST['salary_low'],
+            "",
+            $POST['location_tags'],
+            $POST['rol_tags'],
+            $POST['xp_years'],
+            $POST['sector'],
+            $POST['timeload'],
+            $POST['short_desc'],
+            Session::getInstance()->user->getCUIT()
+          )
+      );
+    } else {
+      $result = false;
+    }
+    return $result;
+  }
 
   function companyPOSTDataCheck($POST) {
     if($POST['register']!="Registrar") { echo 'error registrar'; return false; }
@@ -94,4 +119,16 @@
     return true;
   }
 
+  function newPostPOSTDataCheck($POST) {
+    if($POST['createPost']!="Crear Post") {/*  echo 'error crear post';*/  return false; }
+    if($POST['title']=="") { /* echo 'error companyname';*/  return false; }
+    if($POST['location_tags']=="") { /* echo 'error cuit'; */ return false; }
+    if($POST['rol_tags']=="") { /* echo 'error address'; */ return false; }
+    if($POST['xp_years']=="") { /* echo 'error city';*/  return false; }
+    if($POST['timeload']=="") { /* echo 'error state'; */ return false; }
+    if($POST['salary_high']=="") { /* echo 'error country';*/  return false; }
+    if($POST['salary_low']=="") { /* echo 'error cp';*/  return false; }
+    if($POST['short_desc']=="") { /* echo 'error phone'; */ return false; }
+    return true;
+  }
 ?>

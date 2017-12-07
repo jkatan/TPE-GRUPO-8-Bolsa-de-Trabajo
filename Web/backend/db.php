@@ -61,7 +61,8 @@
           $row['xp_years'],
           $row['sector_id'],
           $row['timeload'],
-          $row['short_desc']
+          $row['short_desc'],
+          $row['company_id']
           ));
       }
 
@@ -302,6 +303,34 @@
       );
       if($result == null) {
         $this->removeUser($user_id);
+        return false;
+      }
+      return true;
+    }
+
+    function addPost($post)
+    {
+      $query = 'INSERT INTO post(title,location_tags,rol_tags,xp_years,sector_id,timeload,salary_high,salary_low,short_desc,company_id)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10);';
+
+      $result = pg_query_params (
+        $this->dbcon,
+        $query,
+        array
+        (
+            $post->getTitle(),
+            $post->getLocation(),
+            $post->getRol(),
+            $post->getXP(),
+            $post->getSector(),
+            $post->getTimeLoad(),
+            $post->getSalaryHigh(),
+            $post->getSalaryLow(),
+            $post->getDescription(),
+            $post->getCompany()
+        )
+      );
+      if($result == null) {
         return false;
       }
       return true;

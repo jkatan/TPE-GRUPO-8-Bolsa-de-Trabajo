@@ -17,8 +17,9 @@
     private $sector_id = "";
     private $timeload = "";
     private $short_desc = "";
+    private $company_id = 0;
 
-    function __construct($title, $id, $salary_high, $salary_low, $creation_date, $location_tags, $rol_tags, $xp_years, $sector_id, $timeload, $short_desc)
+    function __construct($title, $id, $salary_high, $salary_low, $creation_date, $location_tags, $rol_tags, $xp_years, $sector_id, $timeload, $short_desc, $company_id)
     {
       $this->title = $title;
       $this->id = $id;
@@ -31,6 +32,7 @@
       $this->sector_id = $sector_id;
       $this->timeload = $timeload;
       $this->short_desc = $short_desc;
+      $this->company_id = $company_id;
     }
 
     public function getTitle() { return $this->title; }
@@ -54,6 +56,8 @@
     public function getTimeLoad() { return $this->timeload; }
 
     public function getDescription() { return $this->short_desc; }
+
+    public function getCompany() { return $this->company_id; }
 
   }
 
