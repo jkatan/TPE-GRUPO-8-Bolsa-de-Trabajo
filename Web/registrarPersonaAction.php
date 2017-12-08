@@ -14,7 +14,7 @@
         //Confirmation key
         $key = $username . $password . $email;
         $key = md5($key);
-
+        /*
       // Creo un transport de una cuenta de hotmail
       $transport =  Swift_SmtpTransport::newInstance()
           ->setUsername('goWork@outlook.com')->setPassword('passwordDeGowork')

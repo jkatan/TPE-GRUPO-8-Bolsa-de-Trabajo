@@ -244,6 +244,15 @@ ul.profile-actions {
   background-color: orange;
   cursor: pointer;
 }
+#apply-button{
+  cursor:pointer;
+  border: solid black 1px;
+  background-color: orange;
+  width: 78px;
+  margin-left: 40%;
+  margin-top: 5%;
+  border-radius: 4px;
+}
 
 .acepto-terminos {
   padding: 20px;

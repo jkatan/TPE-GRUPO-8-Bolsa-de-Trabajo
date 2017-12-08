@@ -17,6 +17,7 @@
       <span class="title"><?php echo $post->getTitle(); ?></span>
       <div class="divider"></div>
       <div class="description"><?php echo $post->getDescription(); ?></div>
+      <div><button type="button" id="apply-button">Aplicar!</button></div>
     </div>
   </div>
 <?php } } ?>
