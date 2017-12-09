@@ -3,6 +3,7 @@
   require_once(__DIR__.'/model/company.php');
   require_once(__DIR__.'/model/person.php');
   require_once(__DIR__.'/model/post.php');
+  require_once(__DIR__.'/model/applicant.php');
 
   /**
    * Singleton DB connection class
@@ -391,50 +392,42 @@
       }
       return true;
     }
+    function getPostById($id){
+      $array = array();
+      $query = 'SELECT * FROM post WHERE company_id = ' . $id;
 
-  }
+      $mysqli = openConectionDB();
+      $stmt = $mysqli->prepare($query);
+      $stmt->execute();
 
-  function getPostById($id){
-    $query = 'SELECT * FROM post WHERE company_id = $1';
-    $result = pg_query_params(
-      $this->dbcon,
-      $query,
-      array( strtolower($user->getID()) )
-    );
+      $stmt->bind_result($post_id, $creation_date, $title, $location_tags, $rol_tags, $xp_years, $sector_id, $timeload, $salary_high, $salary_low, $short_desc, $company_id);
+      while($stmt->fetch()) {
+        array_push($array, new Post($title, $post_id, $salary_high, $salary_low, $creation_date, $location_tags, $rol_tags, $xp_years, $sector_id, $timeload, $short_desc, $company_id));
+      }
+      $stmt->close();
+      $mysqli->close();
 
-    while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-      array_push($array, new Post(
-        $row['title'],
-        $row['post_id'],
-        $row['salary_high'],
-        $row['salary_low'],
-        $row['creation_date'],
-        $row['location_tags'],
-        $row['rol_tags'],
-        $row['xp_years'],
-        $row['sector_id'],
-        $row['timeload'],
-        $row['short_desc'],
-        $row['company_id'];
-        ));
+      return $array;
     }
 
-    return $array;
-  }
-  
-  function addApplianct($app){
-    $query = 'INSERT INTO Applicant(idUser, idPost, url) VALUES ($1, $2, $3)';
+    function addApplicant($applicant){
 
-    $result = pg_query_params(
-      $this->dbcon,
-      $query,
-      array(
-        $app->getUserId();
-        $app->getPostId();
-        $app->getUrl();
-      );
-      if($result == null)
-        return false
+      $query = 'INSERT INTO applicant(post,user_id,url) VALUES (' . "$applicant->getPost()" . ',' . "$applicant->getUser()" . ',' . "$applicant.getURL()" . ')';
+
+      $mysqli = openConectionDB();
+
+      $stmt = $mysqli->prepare($query);
+      $stmt->execute();
+      $stmt->close();
+      $mysqli->close();
+
       return true;
     }
+
+    function openConectionDB() {
+      return new mysqli('localhost', 'u2017b-8', 'passwordING1','u2017b-8');
+    }
+  }
+
+
 ?>

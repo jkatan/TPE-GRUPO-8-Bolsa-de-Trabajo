@@ -29,7 +29,7 @@
           <input type="radio" name="gender" value="o" required/><label>Otro</label>
         </td></tr>
         <td><label>Ubicaci&oacute;n</label></td>
-        <td><input type="text" placeholder="Direcci&oacute;n" name="address" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
+        <td><input type="text" placeholder="Direcci&oacute;n" name="address" pattern="[A-Za-z0-9\s]+" title="Solo letras o numeros" required/></td></tr>
         <td></td><td><input type="text" placeholder="Localidad" name="city" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
         <td></td><td><input type="text" placeholder="Provincia" name="state" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
         <td></td><td><input type="text" placeholder="Pa&iacute;s" name="country" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
