@@ -215,6 +215,9 @@
         $result_row['address_id'],
         $result_row['user_id']
       );
+      if($result_row['activated'] != "f") {
+        $userobj->activate();
+      }
       if($result_row['pass'] == md5($pass)) {
         if($person = $this->getPersonFromUser($userobj)) {
           return $person;

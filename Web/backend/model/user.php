@@ -13,6 +13,7 @@ require_once(__DIR__.'/address.php');
     private $pass = "";
     private $address = "";
     private $id = "";
+    private $activated = false;
 
     function __construct($username, $pass, $email, $address, $id="")
     {
@@ -29,6 +30,8 @@ require_once(__DIR__.'/address.php');
     public function getPassword() { return $this->pass; }
     public function getAddress() { return $this->address; }
     public function userType() { return "user"; }
+    public function activate() { $this->activated = true; }
+    public function isActivated() { return $this->activated; }
 
   }
 
