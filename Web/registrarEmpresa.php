@@ -17,7 +17,7 @@
           </select>
         </td></tr>
         <td><label>Ubicaci&oacute;n</label></td>
-        <td><input type="text" placeholder="Direcci&oacute;n" name="address" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
+        <td><input type="text" placeholder="Direcci&oacute;n" name="address" pattern="[A-Za-z0-9\s]+" title="Solo letras o numeros" required/></td></tr>
         <td></td><td><input type="text" placeholder="Localidad" name="city" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
         <td></td><td><input type="text" placeholder="Provincia" name="state" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
         <td></td><td><input type="text" placeholder="Pa&iacute;s" name="country" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
@@ -28,12 +28,12 @@
       <h2>Informaci&oacute;n de la cuenta</h2>
       <table>
         <td><label>Nombre de usuario</label></td><td><input type="text" name="username" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
-        <td><label>Contraseña</label></td><td><input id="passEmpresa" class="passEnterprise" type="password" name="pass" pattern="[0-9]+" title="Solo numeros" required/></td></tr>
-        <td><label>Repita contraseña</label></td><td><input id="passConfirmedEmpresa" class="passEnterprise" type="password" name="pass2" pattern="[0-9]+" title="Solo numeros" required/></td></tr>
+        <td><label>Contraseña</label></td><td><input id="passEmpresa" class="passEnterprise" type="password" name="pass" pattern="[0-9]{4,8}" title="Solo numeros, entre 4 y 8 digitos" required/></td></tr>
+        <td><label>Repita contraseña</label></td><td><input id="passConfirmedEmpresa" class="passEnterprise" type="password" name="pass2" pattern="[0-9]{4,8}" title="Solo numeros, entre 4 y 8 digitos" required/></td></tr>
         <td><label>E-mail</label></td><td><input type="email" name="email" /></td>
       </table>
       <div class="acepto-terminos">
-        <input type="checkbox" name="terms" value="accept" /><label>Acepto <a href="">T&eacute;rminos y condiciones</a></label>
+        <input type="checkbox" name="terms" value="accept" required/><label>Acepto <a href="">T&eacute;rminos y condiciones</a></label>
       </div>
       <input class="registrarse" type="submit" value="Registrar" name="register" />
     </form>
