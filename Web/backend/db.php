@@ -394,4 +394,47 @@
 
   }
 
+  function getPostById($id){
+    $query = 'SELECT * FROM post WHERE company_id = $1';
+    $result = pg_query_params(
+      $this->dbcon,
+      $query,
+      array( strtolower($user->getID()) )
+    );
+
+    while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+      array_push($array, new Post(
+        $row['title'],
+        $row['post_id'],
+        $row['salary_high'],
+        $row['salary_low'],
+        $row['creation_date'],
+        $row['location_tags'],
+        $row['rol_tags'],
+        $row['xp_years'],
+        $row['sector_id'],
+        $row['timeload'],
+        $row['short_desc'],
+        $row['company_id'];
+        ));
+    }
+
+    return $array;
+  }
+  
+  function addApplianct($app){
+    $query = 'INSERT INTO Applicant(idUser, idPost, url) VALUES ($1, $2, $3)';
+
+    $result = pg_query_params(
+      $this->dbcon,
+      $query,
+      array(
+        $app->getUserId();
+        $app->getPostId();
+        $app->getUrl();
+      );
+      if($result == null)
+        return false
+      return true;
+    }
 ?>
