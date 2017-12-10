@@ -216,12 +216,14 @@
       );
       if($result_row['pass'] == md5($pass)) {
         if($person = $this->getPersonFromUser($userobj)) {
+          $person->setID($result_row['user_id']);
           if($result_row['activated'] != "f") {
             $person->activate();
             error_log("User is activated!");
           }
           return $person;
         } else if ($company = $this->getCompanyFromUser($userobj)) {
+          $company->setID($result_row['user_id']);
           if($result_row['activated'] != "f") {
             $company->activate();
             error_log("User is activated!");
@@ -419,16 +421,22 @@
 
     function addApplicant($applicant){
 
-      $query = 'INSERT INTO applicant(post,user_id,url) VALUES (' . "$applicant->getPost()" . ',' . "$applicant->getUser()" . ',' . "$applicant.getURL()" . ')';
+      $query = 'INSERT INTO applicant(post_id, user_id, cv_url) VALUES ($1,$2,$3);';
 
-      $mysqli = openConectionDB();
+      $result = pg_query_params(
+        $this->dbcon,
+        $query,
+        array(
+          $applicant->getPost(),
+          $applicant->getUser(),
+          $applicant->getURL()
+      ));
 
-      $stmt = $mysqli->prepare($query);
-      $stmt->execute();
-      $stmt->close();
-      $mysqli->close();
+      if($result != null) {
+        return true;
+      }
 
-      return true;
+      return false;
     }
 
     function openConectionDB() {
