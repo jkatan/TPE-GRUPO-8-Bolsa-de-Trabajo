@@ -179,6 +179,7 @@ ul.profile-actions {
 }
 
 .profile-actions a {
+  font-size: 12pt;
   color: white;
   text-decoration: none;
 }
@@ -270,4 +271,27 @@ ul.profile-actions {
 
 .acepto-terminos {
   padding: 20px;
+}
+
+.applicants-cell {
+    border-color: rgb(171, 171, 171) ;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-width: 1px;
+    padding:10px;
+    text-align: center;
+    margin:0;
+    color: rgb(50,50,50);
+}
+
+.applicants-table tr:nth-child(odd) {background-color: rgba(255,165,0,0.5)}
+
+.applicants-table {
+    border-color: rgb(171, 171, 171);
+    border-style: solid;
+    border-width: 1px;
+    border-collapse: collapse;
+    margin:0;
+    width:80%;
+    background-color: white;
 }
