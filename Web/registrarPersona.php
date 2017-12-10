@@ -39,8 +39,8 @@
       <h2>Informaci&oacute;n de la cuenta</h2>
       <table>
         <td><label>Nombre de usuario</label></td><td><input type="text" name="username" pattern="[A-Za-z\s]+" title="Solo letras" required/></td></tr>
-        <td><label>Contraseña</label></td><td><input id="pass" class="password" type="password" name="pass" pattern="[0-9]{4,8}" title="Solo numeros, entre 4 y 8 digitos" required/></td></tr>
-        <td><label>Repita contraseña</label></td><td><input id="confirmPass" class="password" type="password" name="pass2" pattern="[0-9]{4,8}" title="Solo numeros, entre 4 y 8 digitos" required/></td></tr>
+        <td><label>Contraseña</label></td><td><input id="pass" class="password" type="password" name="pass" pattern="[0-9A-Za-Z]{4,8}" title="Solo numeros o letras, entre 4 y 8" required/></td></tr>
+        <td><label>Repita contraseña</label></td><td><input id="confirmPass" class="password" type="password" name="pass2" pattern="[0-9A-Za-Z]{4,8}" title="Solo numeros o letras, entre 4 y 8" required/></td></tr>
         <td><label>E-mail</label></td><td><input type="email" name="email" required/></td>
       </table>
       <div class="acepto-terminos">
