@@ -24,6 +24,7 @@ require_once(__DIR__.'/address.php');
       $this->address = $address;
     }
 
+    public function setID($id) { $this->id = $id; }
     public function getID() { return $this->id; }
     public function getUsername() { return $this->username; }
     public function getEmail() { return $this->email; }

@@ -3,6 +3,7 @@
   require_once(__DIR__.'/model/company.php');
   require_once(__DIR__.'/model/person.php');
   require_once(__DIR__.'/model/post.php');
+  require_once(__DIR__.'/model/applicablePost.php');
   require_once(__DIR__.'/model/applicant.php');
 
   /**
@@ -81,6 +82,90 @@
           $row['short_desc'],
           $row['company_id']
           ));
+      }
+
+      return $array;
+    }
+
+    function getUserApplications($user_id) {
+      $array = array();
+      $query = 'SELECT * FROM (post NATURAL JOIN applicant)
+                  NATURAL JOIN _user WHERE user_id=$1;';
+      $result = pg_query_params(
+        $this->dbcon,
+        $query,
+        array($user_id)
+      );
+
+      while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+        $aux_post = new Post(
+          $row['title'],
+          $row['post_id'],
+          $row['salary_high'],
+          $row['salary_low'],
+          $row['creation_date'],
+          $row['location_tags'],
+          $row['rol_tags'],
+          $row['xp_years'],
+          $row['sector_id'],
+          $row['timeload'],
+          $row['short_desc'],
+          $row['company_id']
+        );
+        $aux_user = new User (
+          $row['username'],
+          $row['pass'],
+          $row['email'],
+          $row['address_id'],
+          $row['user_id']
+        );
+        array_push($array, new ApplicablePost(
+          $aux_post,
+          $row['cv_url'],
+          $aux_user
+        ));
+      }
+
+      return $array;
+    }
+
+    function getCompanyPosts($company_id) {
+      $array = array();
+      $query = 'SELECT * FROM (post NATURAL JOIN applicant)
+                  NATURAL JOIN _user WHERE company_id=$1;';
+      $result = pg_query_params(
+        $this->dbcon,
+        $query,
+        array($company_id)
+      );
+
+      while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+        $aux_post = new Post(
+          $row['title'],
+          $row['post_id'],
+          $row['salary_high'],
+          $row['salary_low'],
+          $row['creation_date'],
+          $row['location_tags'],
+          $row['rol_tags'],
+          $row['xp_years'],
+          $row['sector_id'],
+          $row['timeload'],
+          $row['short_desc'],
+          $row['company_id']
+        );
+        $aux_user = new User (
+          $row['username'],
+          $row['pass'],
+          $row['email'],
+          $row['address_id'],
+          $row['user_id']
+        );
+        array_push($array, new ApplicablePost(
+          $aux_post,
+          $row['cv_url'],
+          $aux_user
+        ));
       }
 
       return $array;
@@ -216,12 +301,14 @@
       );
       if($result_row['pass'] == md5($pass)) {
         if($person = $this->getPersonFromUser($userobj)) {
+          $person->setID($result_row['user_id']);
           if($result_row['activated'] != "f") {
             $person->activate();
             error_log("User is activated!");
           }
           return $person;
         } else if ($company = $this->getCompanyFromUser($userobj)) {
+          $company->setID($result_row['user_id']);
           if($result_row['activated'] != "f") {
             $company->activate();
             error_log("User is activated!");
@@ -419,16 +506,22 @@
 
     function addApplicant($applicant){
 
-      $query = 'INSERT INTO applicant(post,user_id,url) VALUES (' . "$applicant->getPost()" . ',' . "$applicant->getUser()" . ',' . "$applicant.getURL()" . ')';
+      $query = 'INSERT INTO applicant(post_id, user_id, cv_url) VALUES ($1,$2,$3);';
 
-      $mysqli = openConectionDB();
+      $result = pg_query_params(
+        $this->dbcon,
+        $query,
+        array(
+          $applicant->getPost(),
+          $applicant->getUser(),
+          $applicant->getURL()
+      ));
 
-      $stmt = $mysqli->prepare($query);
-      $stmt->execute();
-      $stmt->close();
-      $mysqli->close();
+      if($result != null) {
+        return true;
+      }
 
-      return true;
+      return false;
     }
 
     function openConectionDB() {
