@@ -3,10 +3,16 @@
 <h1>Aplicantes</h1>
 
 <?php if($session->status == "logged-in") { ?>
-  <table class="applicants-table">
-  <th>Titulo</th><th>Aplicante</td><th>CV</td><th>Email</td></tr>
   <?php
       $posts = DB::getInstance()->getCompanyPosts($session->user->getCUIT());
+      if(count($posts)>0) {
+        ?>
+        <table class="applicants-table">
+        <th>Titulo</th><th>Aplicante</th><th>CV</th><th>Email</th></tr>
+        <?php
+      }  else {
+        echo "Todav&iacute;a nadie aplic&oacute; a tus publicaciones.";
+      }
       foreach ($posts as $post) {
   ?>
   <td class="applicants-cell"><?php echo $post->getTitle(); ?></td>

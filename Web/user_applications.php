@@ -3,14 +3,21 @@
 <h1>Aplicaciones hechas</h1>
 
 <?php if($session->status == "logged-in") { ?>
-  <table class="applicants-table">
-  <th>Titulo</th><th>CV</th></tr>
   <?php
       $posts = DB::getInstance()->getUserApplications($session->user->getID());
+      if(count($posts)>0) {
+        ?>
+        <table class="applicants-table">
+        <th>Titulo</th><th>CV</th><th></th></tr>
+        <?php
+      }  else {
+        echo "Todav&iacute;a no aplicaste a ning&uacute;n trabajo.";
+      }
       foreach ($posts as $post) {
   ?>
   <td class="applicants-cell"><?php echo $post->getTitle(); ?></td>
-  <td class="applicants-cell"><a href="<?php echo $post->getCV(); ?>">Link</a></td></tr>
+  <td class="applicants-cell"><a href="<?php echo $post->getCV(); ?>">Link</a></td>
+  <td class="applicants-cell"><a style="float:right;" href="eliminarApplication.php?post_id=<?php echo $post->getID(); ?>"><img width="20" src="img/delete-icon.png" /></a></td></tr>
 <?php } ?>
 </table>
 <?php } else { ?>

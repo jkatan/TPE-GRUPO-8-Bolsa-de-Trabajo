@@ -6,15 +6,14 @@
 
   $result = DB::getInstance()->addApplicant(new Applicant ($_POST['url'], $_POST['post_id'], $session->user->getID()));
   include("header.php");
+  if($result) {
+    header( "refresh:3;url=user_applications.php" );
+  } else {
+    header( "refresh:3;url=posts.php" );
+  }
 ?>
 
 <h1>Aplicar a un trabajo</h1>
-Datos:
-<?php
-  echo 'URL: '.$_POST['url'];
-  echo 'Post_id: '.$_POST['post_id'];
-  echo 'User_id: '.$session->user->getID();
-?>
 <?php if($result) { ?>
   Ha aplicado correctamente al trabajo!
 <?php } else { ?>
