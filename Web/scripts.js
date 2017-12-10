@@ -37,4 +37,10 @@ $(document).ready(function(){
    console.log("entered click");
   });
 
+  $('.special-post').on('click',function(ev){
+		$(this).find('.extra-info').show('slow');
+	});
+
+
+
 });

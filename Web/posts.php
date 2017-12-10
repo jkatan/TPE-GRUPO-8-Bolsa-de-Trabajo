@@ -13,16 +13,26 @@
       foreach ($posts as $post) {
   ?>
   <div class="post-list">
-    <div class="post">
+    <div class="post special-post">
       <span class="title"><?php echo $post->getTitle(); ?></span>
       <div class="divider"></div>
       <div class="description"><?php echo $post->getDescription(); ?></div>
-      <div><button type="button" id="apply-button">Aplicar!</button></div>
+      <div class="extra-info" style="display:none;">
+        <form class="styled-form" method="POST" action="sendCV.php">
+          <table>
+            <td><label style="color:black;">Link a CV</label ></td><td><input type="text" name="url"/></td><br>
+            <input style="display:none;" type="text" name="post_id" value="<?php echo $post->getID() ?>"/>
+          </table>
+          <input type="submit" value="Enviar" name="createapplicant" />
+        </form>
+      </div>
     </div>
   </div>
 <?php } } ?>
 <?php } else { ?>
   <span class="box-msg error-msg">Error: Debes estar logueado para buscar trabajo!</span>
 <?php } ?>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
 
 <?php include('footer.php'); ?>
