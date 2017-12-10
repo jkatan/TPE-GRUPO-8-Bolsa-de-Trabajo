@@ -7,6 +7,30 @@
     <input class="text-input search" <?php if(isset($_GET['search-keywords'])) { echo 'value="'.$_GET['search-keywords'].'"'; }?> type="text" placeholder="Ej: Programador" name="search-keywords" />
     <input class="button-input" type="submit" value="Buscar" />
   </form>
+  <p>Filtros</p>
+    <span> Sector </span>
+    <span>
+      <select name='sector'>
+        <?php
+        $sectors = DB::getInstance()->getSectors();
+        foreach ($sectors as $sector) {
+          echo '<option value="'.$sector->getID().'">'.$sector->getName().'</option>';
+        }
+        ?>
+      </select>
+    </span>
+    <p></p>
+    <label>Carga horaria</label>
+    <input type="text" name="timeload_tags" />
+    <p></p>
+    <label>Años de experiencia</label>
+    <input type="text" name="xp_tags" />
+    <p></p>
+    <label>Rol</label>
+    <input type="text" name="rol_tags" />
+    <p></p>
+    <label>Ubicaci&oacute;n</label>
+    <input type="text" name="location_tags" />
   <?php
     if(isset($_GET['search-keywords'])) {
       $posts = DB::getInstance()->getPosts(array("keywords" => $_GET['search-keywords']));
