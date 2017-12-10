@@ -114,7 +114,7 @@
         $result_row['surname'],
         $result_row['dni'],
         $result_row['birthdate'],
-        $result_row['gender']
+        $result_row['sex']
       );
       return $ret;
     }
@@ -186,7 +186,6 @@
         $result_row['company_name'],
         $result_row['cuit'],
         $result_row['phone'],
-        $result_row['birthdate'],
         $result_row['sector_id']
       );
       return $ret;
@@ -215,13 +214,18 @@
         $result_row['address_id'],
         $result_row['user_id']
       );
-      if($result_row['activated'] != "f") {
-        $userobj->activate();
-      }
       if($result_row['pass'] == md5($pass)) {
         if($person = $this->getPersonFromUser($userobj)) {
+          if($result_row['activated'] != "f") {
+            $person->activate();
+            error_log("User is activated!");
+          }
           return $person;
         } else if ($company = $this->getCompanyFromUser($userobj)) {
+          if($result_row['activated'] != "f") {
+            $company->activate();
+            error_log("User is activated!");
+          }
           return $company;
         } else {
           return "fail";

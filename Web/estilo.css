@@ -23,6 +23,17 @@ body {
   border-radius: 3px;
 }
 
+.styled-form [type=email] {
+  background-color: rgba(255,255,255,0.9);
+  border-style: solid;
+  box-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+  font-size: 14pt;
+  padding: 5px;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 3px;
+}
+
 .styled-form [type=password] {
   background-color: rgba(255,255,255,0.9);
   border-style: solid;

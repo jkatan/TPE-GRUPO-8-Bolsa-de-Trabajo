@@ -11,13 +11,13 @@
 //  require_once(__DIR__.'lib/swift_required.php');
   $result = insertPersonFromPOST($_POST);
   if($result) {
-    //header( "refresh:3;url=login.php" );
+    header( "refresh:3;url=login.php" );
   } else {
-    //header( "refresh:3;url=errorCreandoCuenta.php" );
+    header( "refresh:3;url=errorCreandoCuenta.php" );
   }
   include("header.php");
 ?>
-<h1>Procesando envío de información...</h1>
+    <h1>Registrar Persona</h1>
     <?php
       if($result) {
         $username = $_POST['username'];
@@ -31,7 +31,7 @@
 
         //Send mail using gmail
         $mail->isSMTP(); // telling the class to use SMTP
-        $mail->SMTPDebug = 4;
+        //$mail->SMTPDebug = 4;
         $mail->SMTPAuth = true; // enable SMTP authentication
         $mail->SMTPSecure = "tls"; // sets the prefix to the servier
         $mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server

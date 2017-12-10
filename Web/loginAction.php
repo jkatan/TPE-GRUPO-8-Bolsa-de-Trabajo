@@ -2,7 +2,7 @@
   require_once(__DIR__.'/backend/db.php');
   require_once(__DIR__.'/backend/session.php');
   if(($user = DB::getInstance()->checkLogin($_POST['username'], $_POST['pass'])) != "fail") {
-    if(!$user->isActivated()) {
+    if($user->isActivated() == false) {
       header( "refresh:3;url=login.php" );
       $msg = "<span class=\".box-msg error\">Su cuenta no esta activada, chequee su email!</span>";
     } else {
