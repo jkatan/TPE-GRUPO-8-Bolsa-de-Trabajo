@@ -6,34 +6,51 @@
   <form method="GET">
     <input class="text-input search" <?php if(isset($_GET['search-keywords'])) { echo 'value="'.$_GET['search-keywords'].'"'; }?> type="text" placeholder="Ej: Programador" name="search-keywords" />
     <input class="button-input" type="submit" value="Buscar" />
+    <p>Filtros</p>
+      <span> Sector </span>
+      <span>
+        <select name='sector'>
+          <option disabled selected value> </option>
+          <?php
+          $sectors = DB::getInstance()->getSectors();
+          foreach ($sectors as $sector) {
+            echo '<option value="'.$sector->getID().'">'.$sector->getName().'</option>';
+          }
+          ?>
+        </select>
+      </span>
+      <p></p>
+      <label>Carga horaria</label>
+      <input type="text" name="timeload_tags" />
+      <p></p>
+      <label>Años de experiencia</label>
+      <input type="text" name="xp_tags" />
+      <p></p>
+      <label>Rol</label>
+      <input type="text" name="rol_tags" />
+      <p></p>
+      <label>Ubicaci&oacute;n</label>
+      <input type="text" name="location_tags" />
   </form>
-  <p>Filtros</p>
-    <span> Sector </span>
-    <span>
-      <select name='sector'>
-        <?php
-        $sectors = DB::getInstance()->getSectors();
-        foreach ($sectors as $sector) {
-          echo '<option value="'.$sector->getID().'">'.$sector->getName().'</option>';
-        }
-        ?>
-      </select>
-    </span>
-    <p></p>
-    <label>Carga horaria</label>
-    <input type="text" name="timeload_tags" />
-    <p></p>
-    <label>Años de experiencia</label>
-    <input type="text" name="xp_tags" />
-    <p></p>
-    <label>Rol</label>
-    <input type="text" name="rol_tags" />
-    <p></p>
-    <label>Ubicaci&oacute;n</label>
-    <input type="text" name="location_tags" />
   <?php
     if(isset($_GET['search-keywords'])) {
-      $posts = DB::getInstance()->getPosts(array("keywords" => $_GET['search-keywords']));
+      $query = "SELECT * FROM post WHERE LOWER(title) LIKE '%".strtolower($_GET[('search-keywords')])."%'";
+      if(isset($_GET['sector'])){
+        $query.= ' and sector_id = '. $_GET['sector'];
+      }
+      if(isset($_GET['timeload_tags']) && $_GET['timeload_tags'] != ""){
+          $query .= ' and timeload = ' . $_GET['timeload_tags'];
+      }
+      if(isset($_GET['xp_tags']) && $_GET['xp_tags'] != ""){
+          $query .= ' and xp_years =' . $_GET['xp_tags'];
+      }
+      if(isset($_GET['rol_tags']) && $_GET['rol_tags'] != ""){
+          $query .= "and LOWER(rol_tags) = '".strtolower($_GET['rol_tags'])."'";
+      }
+      if(isset($_GET['location_tags']) && $_GET['location_tags'] != ""){
+          $query .= "and LOWER(location_tags) = '".strtolower($_GET['location_tags'])."'";
+      }
+      $posts = DB::getInstance()->getPostByFilters($query);
       if(count($posts)>0) {
         ?>
         <div class="post-list">
