@@ -4,13 +4,11 @@
 
 <?php if($session->status == "logged-in") { ?>
   <form method="GET">
-    <input class="text-input search" <?php if(isset($_GET['search-keywords'])) { echo 'value="'.$_GET['search-keywords'].'"'; }?> type="text" placeholder="Ej: Programador" name="search-keywords" />
-    <input class="button-input" type="submit" value="Buscar" />
-  </form>
-  <p>Filtros</p>
+    <p>Filtros</p>
     <span> Sector </span>
     <span>
       <select name='sector'>
+         <option disabled selected value> </option>
         <?php
         $sectors = DB::getInstance()->getSectors();
         foreach ($sectors as $sector) {
@@ -31,9 +29,55 @@
     <p></p>
     <label>Ubicaci&oacute;n</label>
     <input type="text" name="location_tags" />
+    </br>
+    <input class="button-input" type="submit" value="Buscar" />
+  </form>
+
   <?php
-    if(isset($_GET['search-keywords'])) {
-      $posts = DB::getInstance()->getPosts(array("keywords" => $_GET['search-keywords']));
+      $query = 'SELECT * FROM post';
+      $flag = False;
+      if(isset($_GET['sector'])){
+        $flag = True;
+        $query.= ' WHERE sector_id = '. $_GET['sector'];
+      }
+      if(isset($_GET['timeload_tags']) && $_GET['timeload_tags'] != ""){
+        if($flag == True){
+          $query .= ' and timeload =' . $_GET['timeload_tags'];
+        }
+        else{
+          $query .= ' WHERE timeload =' . $_GET['timeload_tags'];
+          $flag = True;
+        }
+      }
+      if(isset($_GET['xp_tags']) && $_GET['xp_tags'] != ""){
+        if($flag == True){
+          $query .= ' and xp_years =' . $_GET['xp_tags'];
+        }
+        else{
+          $query .= ' WHERE xp_years =' . $_GET['xp_years'];
+          $flag = True;
+        }
+      }
+      if(isset($_GET['rol_tags']) && $_GET['rol_tags'] != ""){
+        if($flag == True){
+          $query .= ' and rol_tags = '. $_GET['rol_tags'];
+        }
+        else{
+          $query .= ' WHERE rol_tags = '.$_GET['rol_tags'];
+          $query = True;
+        }
+      }
+      if(isset($_GET['location_tags']) && $_GET['location_tags'] != ""){
+        if($flag == True){
+          $query .= ' and location_tags = '.$_GET['location_tags'];
+        }
+        else{
+          $query .= ' WHERE location_tags =' . $_GET['location_tags'];
+          $flag = True;
+        }
+      }
+      $posts = array();
+      $posts = DB::getInstance()->getPostByFilters($query);
       if(count($posts)>0) {
         ?>
         <div class="post-list">
@@ -59,7 +103,7 @@
     </div>
 <?php } ?>
   </div>
-<?php } } else { ?>
+<?php  } else { ?>
   <span class="box-msg error-msg">Error: Debes estar logueado para buscar trabajo!</span>
 <?php } ?>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

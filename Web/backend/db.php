@@ -524,8 +524,16 @@
       return false;
     }
 
-    function openConectionDB() {
-      return new mysqli('localhost', 'u2017b-8', 'passwordING1','u2017b-8');
+    function getPostByFilters($query){
+
+      $array = array();
+      $result = pg_query($this->dbcon, $query);
+      while ($row = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+        array_push($array, new Post($row['title'], $row['$post_id'], $row['salary_high'], $row['salary_low'], $row['creation_date'], $row['location_tags'], $row['rol_tags'], $row['xp_years'], $row['sector_id'], $row['timeload'],
+        $row['short_desc'], $row['company_id']));
+      }
+      return $array;
+
     }
   }
 
